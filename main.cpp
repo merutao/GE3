@@ -10,6 +10,7 @@
 #define DIRECTINPUT_VERSION     0x0800   // DirectInputのバージョン指定
 #include <dinput.h>
 #include <wrl.h>
+#include "Input.h"
 
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
@@ -956,6 +957,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     size_t textureIndex = 0;
     BYTE key[256] = {};
 
+    //ポインタ
+    Input* input = nullptr;
+
+    //入力の初期化
+    input = new Input();
+    input->Initialize(w.hInstance, hwnd);
+
     // ゲームループ
     while (true) {
         // メッセージがある？
@@ -1124,6 +1132,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
         // DirectX毎フレーム処理　ここまで
 
     }
+
+    //解放
+    delete input;
 
     // ウィンドウクラスを登録解除
     UnregisterClass(w.lpszClassName, w.hInstance);
