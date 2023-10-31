@@ -14,6 +14,10 @@ public:
 	//namespace省略
 	template<class T>using ComPtr = Microsoft::WRL::ComPtr<T>;
 
+	bool PushKey(BYTE KeyNumber);
+
+	bool TriggerKey(BYTE KeyNumber);
+
 public:
 
 	void Initialize(HINSTANCE hInstance, HWND hwnd);	//初期化
@@ -22,5 +26,12 @@ public:
 private:
 	//キーボードデバイス生成
 	ComPtr<IDirectInputDevice8>keyboard;
+
+	// DirectInputの初期化
+	Microsoft::WRL::ComPtr<IDirectInput8> directInput;
+
+	BYTE key[256] = {};
+
+	BYTE keyPre[256] = {};
 };
 
