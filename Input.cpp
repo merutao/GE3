@@ -13,7 +13,7 @@ void Input::Initialize(HINSTANCE hInstance, HWND hwnd)
 	HRESULT result;
 
 	//DirectInput
-	ComPtr<IDirectInput8>directInput = nullptr;
+	/*ComPtr<IDirectInput8>directInput = nullptr;*/
 	result = DirectInput8Create(hInstance, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&directInput, nullptr);
 	assert(SUCCEEDED(result));
 

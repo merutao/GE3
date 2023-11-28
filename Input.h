@@ -25,7 +25,7 @@ public:
 
 private:
 	//キーボードデバイス生成
-	ComPtr<IDirectInputDevice8>keyboard;
+	Microsoft::WRL::ComPtr<IDirectInputDevice8>keyboard;
 
 	// DirectInputの初期化
 	Microsoft::WRL::ComPtr<IDirectInput8> directInput;
