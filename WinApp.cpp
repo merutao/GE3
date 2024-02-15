@@ -1,4 +1,5 @@
 ﻿#include "WinApp.h"
+#pragma comment(lib,"winmm.lib")
 
 // ウィンドウプロシージャ
 LRESULT WinApp::WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
@@ -45,10 +46,11 @@ void WinApp::Initialize()
 		w.hInstance,            // 呼び出しアプリケーションハンドル
 		nullptr);               // オプション
 
+	//システムタイマーの分解能を上げる
+	timeBeginPeriod(1);
+
 	// ウィンドウを表示状態にする
 	ShowWindow(hwnd, SW_SHOW);
-
-
 }
 
 bool WinApp::Update()
@@ -61,7 +63,7 @@ bool WinApp::Update()
 
 	// ✖ボタンで終了メッセージが来たらゲームループを抜ける
 	if (msg.message == WM_QUIT) {
-		return true; //break
+		return true;
 	}
 
 	return false;
